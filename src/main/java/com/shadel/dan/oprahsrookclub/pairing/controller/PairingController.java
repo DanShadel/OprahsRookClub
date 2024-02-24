@@ -10,7 +10,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
@@ -28,16 +27,21 @@ public class PairingController {
         return pairingRepository.findAll();
     }
     
-    @GetMapping("/startRound")
-    public void startRound(@RequestParam Integer roundNum) {
-        pairingService.generatePairings(roundNum);
-    }
+    // @GetMapping("/startNextRound")
+    // public void startNextRound() {
+    //     // pairingService.startNextRound();
+    // }
 
     @GetMapping("/clear")
     public void clearPairings() {
-        System.out.println("clear");
+        pairingRepository.deleteAll();
+        return;
+    }
+
+    @GetMapping("/create")
+    public void createPairings() {
+        pairingService.createPairings();
         return;
     }
     
-
 }

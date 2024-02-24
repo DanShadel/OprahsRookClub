@@ -25,4 +25,6 @@ public class Pairing {
     public Entrant winner;
 
     public String p1Color;
+
+    public String matchNumber;
 }
